@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get-fit | Elite Nutrition & Tracking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 1);
+            border: 1px solid rgba(226, 232, 240, 1);
+        }
+        .custom-shadow {
+            box-shadow: 0 4px 15px -1px rgba(0, 0, 0, 0.04);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen pb-24">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 px-4 py-3">
+        <div class="max-w-md mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-tighter text-emerald-600 italic">get-fit</h1>
+            <div class="flex items-center gap-3">
+                <div class="text-right">
+                    <p class="text-[10px] uppercase font-bold text-slate-400">Current Weight</p>
+                    <p class="text-sm font-bold text-slate-700" id="nav-weight">77.0 kg</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-md mx-auto px-4 mt-6">
+        
+        <!-- SECTION: MEALS -->
+        <div id="meals-section" class="space-y-8">
+            <header>
+                <h2 class="text-2xl font-bold text-slate-800 tracking-tight">3-Meal Focused Plan</h2>
+                <p class="text-slate-500 text-sm">Optimized portions for 77kg & 5'3".</p>
+            </header>
+
+            <!-- Breakfast Block -->
+            <section class="space-y-3">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="w-2 h-6 bg-emerald-500 rounded-full"></span>
+                    <h3 class="font-bold text-slate-700">Light Breakfast</h3>
+                </div>
+                <div class="flex overflow-x-auto gap-4 pb-2 hide-scrollbar">
+                    <div class="min-w-[280px] glass-card p-4 rounded-2xl custom-shadow">
+                        <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">Option 1</span>
+                        <h4 class="font-bold mt-2">Boiled Chana Chaat</h4>
+                        <p class="text-xs text-slate-500 mt-1">1 cup boiled chana, 1/2 onion, 1/2 tomato, 1 tbsp lemon juice.</p>
+                        <div class="mt-3 flex gap-3 text-[10px] font-bold text-slate-400">
+                            <span>~250 Cal</span><span>14g Protein</span>
+                        </div>
+                    </div>
+                    <div class="min-w-[280px] glass-card p-4 rounded-2xl custom-shadow">
+                        <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">Option 2</span>
+                        <h4 class="font-bold mt-2">Raw Paneer & Cucumber</h4>
+                        <p class="text-xs text-slate-500 mt-1">75g raw paneer (cubed), 1 medium cucumber, pinch of rock salt.</p>
+                        <div class="mt-3 flex gap-3 text-[10px] font-bold text-slate-400">
+                            <span>~220 Cal</span><span>14g Protein</span>
+                        </div>
+                    </div>
+                    <div class="min-w-[280px] glass-card p-4 rounded-2xl custom-shadow">
+                        <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">Option 3</span>
+                        <h4 class="font-bold mt-2">Roasted Soya & Curd</h4>
+                        <p class="text-xs text-slate-500 mt-1">30g soya chunks (dry), 100g plain homemade curd.</p>
+                        <div class="mt-3 flex gap-3 text-[10px] font-bold text-slate-400">
+                            <span>~240 Cal</span><span>18g Protein</span>
+                        </div>
+                    </div>
+                    <div class="min-w-[280px] glass-card p-4 rounded-2xl custom-shadow">
+                        <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">Option 4</span>
+                        <h4 class="font-bold mt-2">Clear Chana Broth</h4>
+                        <p class="text-xs text-slate-500 mt-1">2 cups boiled chana water, 1/4 cup mashed chana, ginger.</p>
+                        <div class="mt-3 flex gap-3 text-[10px] font-bold text-slate-400">
+                            <span>~130 Cal</span><span>7g Protein</span>
+                        </div>
+                    </div>
+                    <div class="min-w-[280px] glass-card p-4 rounded-2xl custom-shadow">
+                        <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">Option 5</span>
+                        <h4 class="font-bold mt-2">Paneer Bhurji (Dry)</h4>
+                        <p class="text-xs text-slate-500 mt-1">60g crumbled paneer, coriander, no oil.</p>
+                        <div class="mt-3 flex gap-3 text-[10px] font-bold text-slate-400">
+                            <span>~200 Cal</span><span>11g Protein</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lunch Block -->
+            <section class="space-y-3">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="w-2 h-6 bg-blue-500 rounded-full"></span>
+                    <h3 class="font-bold text-slate-700">Hearty Lunch</h3>
+                </div>
+                <div class="flex overflow-x-auto gap-4 pb-2 hide-scrollbar">
+                    <div class="min-w-[280px] glass-card p-4 rounded-2xl custom-shadow">
+                        <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">Option 1</span>
+                        <h4 class="font-bold mt-2">Soya Chunk Pulao</h4>
+                        <p class="text-xs text-slate-500 mt-1">50g soya chunks, 1 cup cooked rice, cumin seeds.</p>
+                        <div class="mt-3 flex gap-3 text-[10px] font-bold text-slate-400">
+                            <span>~480 Cal</span><span>30g Protein</span>
+                        </div>
+                    </div>
+                    <div class="min-w-[280px] glass-card p-4 rounded-2xl custom-shadow">
+                        <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">Option 2</span>
+                        <h4 class="font-bold mt-2">Chana Curry & Roti</h4>
+                        <p class="text-xs text-slate-500 mt-1">1.5 cups chana gravy, 1 medium wheat roti (30g).</p>
+                        <div class="mt-3 flex gap-3 text-[10px] font-bold text-slate-400">
+                            <span>~410 Cal</span><span>20g Protein</span>
+                        </div>
+                    </div>
+                    <div class="min-w-[280px] glass-card p-4 rounded-2xl custom-shadow">
+                        <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">Option 3</span>
+                        <h4 class="font-bold mt-2">Paneer & 2 Rotis</h4>
+                        <p class="text-xs text-slate-500 mt-1">100g paneer sautéed with onion, 2 dry rotis.</p>
+                        <div class="mt-3 flex gap-3 text-[10px] font-bold text-slate-400">
+                            <span>~490 Cal</span><span>24g Protein</span>
+                        </div>
+                    </div>
+                    <div class="min-w-[280px] glass-card p-4 rounded-2xl custom-shadow">
+                        <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">Option 4</span>
+                        <h4 class="font-bold mt-2">Curd Rice & Soya</h4>
+                        <p class="text-xs text-slate-500 mt-1">1 cup rice, 150g curd, 30g boiled soya chunks.</p>
+                        <div class="mt-3 flex gap-3 text-[10px] font-bold text-slate-400">
+                            <span>~450 Cal</span><span>22g Protein</span>
+                        </div>
+                    </div>
+                    <div class="min-w-[280px] glass-card p-4 rounded-2xl custom-shadow">
+                        <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">Option 5</span>
+                        <h4 class="font-bold mt-2">Massive Chana Salad</h4>
+                        <p class="text-xs text-slate-500 mt-1">2 cups boiled chana, onion, tomato, lemon.</p>
+                        <div class="mt-3 flex gap-3 text-[10px] font-bold text-slate-400">
+                            <span>~380 Cal</span><span>22g Protein</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dinner Block -->
+            <section class="space-y-3 pb-8">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="w-2 h-6 bg-indigo-500 rounded-full"></span>
+                    <h3 class="font-bold text-slate-700">Satisfying Dinner</h3>
+                </div>
+                <div class="flex overflow-x-auto gap-4 pb-2 hide-scrollbar">
+                    <div class="min-w-[280px] glass-card p-4 rounded-2xl custom-shadow">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">Option 1</span>
+                        <h4 class="font-bold mt-2">Paneer Tikka (Pan)</h4>
+                        <p class="text-xs text-slate-500 mt-1">120g paneer, 1/2 capsicum, seared on tawa.</p>
+                        <div class="mt-3 flex gap-3 text-[10px] font-bold text-slate-400">
+                            <span>~340 Cal</span><span>22g Protein</span>
+                        </div>
+                    </div>
+                    <div class="min-w-[280px] glass-card p-4 rounded-2xl custom-shadow">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">Option 2</span>
+                        <h4 class="font-bold mt-2">Soya Keema & Roti</h4>
+                        <p class="text-xs text-slate-500 mt-1">40g soya granules, onion, 1 dry roti.</p>
+                        <div class="mt-3 flex gap-3 text-[10px] font-bold text-slate-400">
+                            <span>~380 Cal</span><span>26g Protein</span>
+                        </div>
+                    </div>
+                    <div class="min-w-[280px] glass-card p-4 rounded-2xl custom-shadow">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">Option 3</span>
+                        <h4 class="font-bold mt-2">Chana-Paneer Toss</h4>
+                        <p class="text-xs text-slate-500 mt-1">1/2 cup chana, 80g paneer, sautéed together.</p>
+                        <div class="mt-3 flex gap-3 text-[10px] font-bold text-slate-400">
+                            <span>~350 Cal</span><span>24g Protein</span>
+                        </div>
+                    </div>
+                    <div class="min-w-[280px] glass-card p-4 rounded-2xl custom-shadow">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">Option 4</span>
+                        <h4 class="font-bold mt-2">High-Protein Soya Curry</h4>
+                        <p class="text-xs text-slate-500 mt-1">60g soya chunks (boiled) in thick tomato gravy.</p>
+                        <div class="mt-3 flex gap-3 text-[10px] font-bold text-slate-400">
+                            <span>~320 Cal</span><span>32g Protein</span>
+                        </div>
+                    </div>
+                    <div class="min-w-[280px] glass-card p-4 rounded-2xl custom-shadow">
+                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">Option 5</span>
+                        <h4 class="font-bold mt-2">Broth with Paneer Cubes</h4>
+                        <p class="text-xs text-slate-500 mt-1">2 cups chana soup, 70g paneer cubes added.</p>
+                        <div class="mt-3 flex gap-3 text-[10px] font-bold text-slate-400">
+                            <span>~290 Cal</span><span>18g Protein</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- SECTION: TRACKER & STATS -->
+        <div id="tracker-section" class="hidden space-y-6">
+            <header>
+                <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Your Stats (5'3" | 77kg)</h2>
+                <p class="text-xs text-slate-400">3-Meal structure focused on weight management.</p>
+            </header>
+
+            <!-- Macros Chart Card -->
+            <div class="glass-card rounded-2xl p-6 custom-shadow">
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Macro Distribution</h3>
+                <div class="flex items-center justify-between">
+                    <div class="w-1/2">
+                        <canvas id="macroChart"></canvas>
+                    </div>
+                    <div class="w-1/2 pl-6 space-y-3">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 bg-emerald-500 rounded-full"></span>
+                            <span class="text-xs font-medium">Protein (130g)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 bg-blue-500 rounded-full"></span>
+                            <span class="text-xs font-medium">Carbs (140g)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 bg-slate-300 rounded-full"></span>
+                            <span class="text-xs font-medium">Fats (45g)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Inputs -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="glass-card p-4 rounded-2xl custom-shadow">
+                    <label class="text-[10px] font-bold text-slate-400 uppercase">Weight (kg)</label>
+                    <input type="number" step="0.1" id="weight-input" value="77.0" class="w-full text-xl font-bold bg-transparent focus:outline-none" onchange="updateWeight(this.value)">
+                </div>
+                <div class="glass-card p-4 rounded-2xl custom-shadow">
+                    <label class="text-[10px] font-bold text-slate-400 uppercase">Daily Goal</label>
+                    <div class="text-xl font-bold text-emerald-600">1750 Cal</div>
+                </div>
+            </div>
+
+            <!-- Weight Progression Chart -->
+            <div class="glass-card rounded-2xl p-6 custom-shadow">
+                <h3 class="text-sm font-bold text-slate-400 uppercase mb-4">Weight Trend</h3>
+                <canvas id="weightTrendChart" height="150"></canvas>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bottom Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-slate-200 px-10 py-4 flex justify-around items-center">
+        <button onclick="showSection('meals')" class="flex flex-col items-center gap-1 group">
+            <svg id="icon-meals" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-emerald-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            <span class="text-[10px] font-bold text-emerald-600">MEALS</span>
+        </button>
+        <button onclick="showSection('tracker')" class="flex flex-col items-center gap-1 group">
+            <svg id="icon-tracker" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            <span class="text-[10px] font-bold text-slate-300">STATS</span>
+        </button>
+    </div>
+
+    <script>
+        let macroChart, weightChart;
+
+        function showSection(section) {
+            const meals = document.getElementById('meals-section');
+            const tracker = document.getElementById('tracker-section');
+            
+            if (section === 'meals') {
+                meals.classList.remove('hidden');
+                tracker.classList.add('hidden');
+                updateNavStyles(true);
+            } else {
+                meals.classList.add('hidden');
+                tracker.classList.remove('hidden');
+                updateNavStyles(false);
+                initCharts();
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateNavStyles(isMeals) {
+            const iconMeals = document.getElementById('icon-meals');
+            const iconTracker = document.getElementById('icon-tracker');
+            const textMeals = iconMeals.nextElementSibling;
+            const textTracker = iconTracker.nextElementSibling;
+
+            if(isMeals) {
+                iconMeals.classList.replace('text-slate-300', 'text-emerald-600');
+                textMeals.classList.replace('text-slate-300', 'text-emerald-600');
+                iconTracker.classList.replace('text-emerald-600', 'text-slate-300');
+                textTracker.classList.replace('text-emerald-600', 'text-slate-300');
+            } else {
+                iconTracker.classList.replace('text-slate-300', 'text-emerald-600');
+                textTracker.classList.replace('text-slate-300', 'text-emerald-600');
+                iconMeals.classList.replace('text-emerald-600', 'text-slate-300');
+                textMeals.classList.replace('text-emerald-600', 'text-slate-300');
+            }
+        }
+
+        function updateWeight(val) {
+            document.getElementById('nav-weight').innerText = val + ' kg';
+        }
+
+        function initCharts() {
+            const ctxMacro = document.getElementById('macroChart').getContext('2d');
+            if (macroChart) macroChart.destroy();
+            macroChart = new Chart(ctxMacro, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [45, 40, 15],
+                        backgroundColor: ['#10b981', '#3b82f6', '#cbd5e1'],
+                        borderWidth: 0,
+                        cutout: '75%'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            const ctxWeight = document.getElementById('weightTrendChart').getContext('2d');
+            if (weightChart) weightChart.destroy();
+            weightChart = new Chart(ctxWeight, {
+                type: 'line',
+                data: {
+                    labels: ['Start', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Today'],
+                    datasets: [{
+                        label: 'Weight',
+                        data: [78.5, 78.2, 77.9, 78.0, 77.6, 77.3, 77.0],
+                        borderColor: '#10b981',
+                        tension: 0.4,
+                        fill: false,
+                        pointRadius: 3,
+                        pointBackgroundColor: '#10b981'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { display: false, min: 75, max: 80 },
+                        x: { grid: { display: false } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
